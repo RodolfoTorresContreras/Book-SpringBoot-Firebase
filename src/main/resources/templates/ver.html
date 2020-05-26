@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+        <div class="container py-4">
+
+            <div class="card bg-light">
+                <div class="card-header" th:text="${titulo}"> </div>
+                
+                <h4 class="card-header" th:if="${!bandera}"><p th:text="'Ganador '+${comentarios.nameUser}"></p></h4>
+                <div class="card-body">
+                    <div class="text-center">
+                        <img class="rounded"
+                             style="max-width: 55%;" th:src="@{'/img/' + ${libro.img}}" th:alt="${libro.img}"/>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item" th:text="${libro.nombre}"></li>
+                        <li class="list-group-item" th:text="${libro.genero}"></li>
+                        <li class="list-group-item" th:text="${libro.autor}"></li>
+                        <li class="list-group-item" th:text="${libro.idioma}"></li>
+                        <li class="list-group-item" th:text="${libro.descripcion}"></li>
+                        <li class="list-group-item" th:text="${libro.condicion}"></li>
+                        <li class="list-group-item" th:text="'$'+${libro.PrecioPuja}"></li>
+                        <li class="list-group-item" th:text="${#dates.format(libro.duracion, 'YYYY-MM-dd HH:mm')}+' min'"></li>
+
+                    </ul>                                                                                                            
+
+                    <td th:if="${bandera}"><a class="btn btn-primary btn-xs"  th:href="@{/formOferta/} + ${libro.id}" th:text="'Ofertar'" ></a></td>
+                </div>
+            </div>
+
+            <br>
+            <div class="card border-primary mb-3" >
+                <div class="card-header">Ofertas</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title" th:text="${comentarios.libro}"></h5>
+                    <p class="card-text" th:text="${comentarios.idUser}"></p>
+                    <p class="card-text" th:text="${comentarios.nameUser}"></p>
+                    <p class="card-text" th:text="'$'+${comentarios.ofertaLibro}"></p>
+                </div>
+
+            </div>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

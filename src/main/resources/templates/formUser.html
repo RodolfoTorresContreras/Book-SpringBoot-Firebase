@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+
+        <div class="container py-4">
+
+            <div class ="card bg-dark text-white">
+                <div class="card-header" th:text ="${titulo}"></div>
+                <div class="card-body">
+
+
+                    <form th:action="@{/formUser}" th:object="${usuario}" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-6">
+                                <input required="true" type="text" th:field="*{name}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Edad</label>
+                            <div class="col-sm-6">
+                                <input required="true" type="text" th:field="*{age}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-6">
+                                <input required="true" type="text" th:field="*{password}" class="form-control th:errorclass="'form-control alert-danger'""/>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-6">
+                                <input required="true" type="text" th:field="*{mail}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Municipio</label>
+                            <div class="col-sm-6">
+                                <input required="true" type="text" th:field="*{municipio}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Phone</label>
+                            <div class="col-sm-6">
+                                <input required="true" type="text" th:field="*{phone}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="file" class="col-sm-2 col-form-label" >Foto</label>
+                            <div class="col-sm-6">
+                                <input  type="file" name="file" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <label for="admin" class="col-sm-2 col-form-label">Administrador</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="checkbox" id="admin" th:field="*{admin}"/>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row" >
+                            <label class="col-sm-2 col-form-label" for="enable">Enable</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="checkbox" id="enable" th:field="*{enable}"/>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <input required="true" type="submit" value="Crear Usuario" class="btn btn-secondary"/>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

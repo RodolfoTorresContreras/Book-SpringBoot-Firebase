@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+        <div class="container py-4">
+
+            <div class ="card bg-dark text-white">
+                <div class="card-header" th:text ="${titulo}"></div>
+                <div class="card-body">
+                    <form th:action="@{/formOferta}" th:object="${comentario}" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Oferta</label>
+                            <div class="col-sm-6">
+                                <input  required="true" type="text" th:field="*{ofertaLibro}" class="form-control"/>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <input required="true" type="submit" value="Ofertar" class="btn btn-secondary"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

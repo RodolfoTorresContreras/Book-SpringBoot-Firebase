@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+        <div class="container py-5">
+
+            <div class ="card bg-light" >
+                <div class="card-header" th:text ="${titulo}"></div>
+
+                <div class="card-body">
+
+                    <h4 class="card-title"><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" class="btn btn-primary btn-xs" th:href="@{/formUser}">Crear Usuario</a></h4>
+                    <div class="table-responsive-md">
+                        <table class ="table table-striped table-bordered">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Número</th>
+                                    <th>Admin</th>
+                                    <th>Email</th>                               
+                                    <th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">Editar</th>
+                                    <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                                </tr>
+                            </thead> 
+                            <tbody>
+                                <tr th:each="person: ${personas}">                           
+                                    <td th:text="${person.name}"></td>
+                                    <td th:text="${person.phone}"></td>
+                                    <td th:text="${person.admin}"></td>
+                                    <td th:text="${person.mail}"></td>
+                                    
+                                    <td sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"><a class="btn btn-primary btn-xs"  th:href="@{/formUser/} + ${person.id}" th:text="'Editar'" ></a></td>
+                                    <td sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"><a class="btn btn-danger btn-xs" th:href="@{/userDelete/} + ${person.id}" onclick="return confirm('Estas seguro que quieres eliminar?');" th:text="'Eliminar'" ></a></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

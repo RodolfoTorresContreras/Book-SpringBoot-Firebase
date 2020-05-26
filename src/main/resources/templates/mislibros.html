@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+
+        <header th:replace="layout/layout :: header"></header>
+
+        <div class="container py-4">
+
+            <div class ="card bg-light">
+                <div class="card-header" th:text ="${titulo}"></div>
+
+                <div class="card-body">
+
+                    <h4 class="card-title"><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"  class="btn btn-primary btn-xs" th:href="@{/form}">Crear Libro</a></h4>
+                    <table class ="table table-striped table-bordered">
+
+                        <tbody>
+
+                        <div class="row" th:fragment="list" xmlns:th="http://www.thymeleaf.org">
+                            <div th:each="libro, stat : ${libros}" class="col-sm-4">
+                                <div class="card mb-3">
+                                    <picture>
+                                        <img class="img-fluid img-thumbnail rounded mx-auto d-block"
+                                             style="max-width: 40%;" th:src="@{'/img/' + ${libro.img}}" th:alt="${libro.img}"/>
+                                    </picture>
+                                    <div class="card-body">
+
+                                        <h5 class="card-title" th:text="${libro.nombre}">Product name</h5>
+                                        <p class="card-text" th:text="${libro.precioInicial}">Precio</p>
+                                        <p th:text="${libro.descripcion}">Descripcion</p>
+                                        <div class="text-center">
+
+                                            <a  class="btn btn-info" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" th:href="@{/ver/} + ${libro.id}"  th:text="Ver"></a>
+                                            <a  th:if="${libro['persona'] == persona}" class="btn btn-primary btn-xs" th:href="@{/form/} + ${libro.id}" onclick="return confirm('Estas seguro que quieres editar?');" th:text="'Editar'" ></a>
+                                            <a th:if="${libro['persona'] == persona}"  class="btn btn-danger btn-xs" th:href="@{/delete/} + ${libro.id}" onclick="return confirm('Estas seguro que quieres eliminar?');" th:text="'Eliminar'" ></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>
