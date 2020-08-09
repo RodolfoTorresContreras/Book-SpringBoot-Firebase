@@ -8,8 +8,6 @@ _Aplicación que simula una subaste de libros_
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
 
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 
