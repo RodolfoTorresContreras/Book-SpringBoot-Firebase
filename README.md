@@ -18,7 +18,7 @@ _Aplicación que simula una subaste de libros_
 ## Autores 
 
 
-* **Rodolfo Torres** - *Trabajo Inicial* - [RodolfoTorresContreras](https://github.com/RodolfoTorresContreras)
+* [RodolfoTorresContreras](https://github.com/RodolfoTorresContreras)
 
 
 
