@@ -6,15 +6,16 @@ _Aplicación que simula una subaste de libros_
 
 
 
-## Construido con 🛠️
-
+## Construido con 
 
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
+* Bootstrap
+* Thymeleaf
 
 
 
 
-## Autores ✒️
+## Autores 
 
 
 * **Rodolfo Torres** - *Trabajo Inicial* - [RodolfoTorresContreras](https://github.com/RodolfoTorresContreras)
@@ -22,13 +23,6 @@ _Aplicación que simula una subaste de libros_
 
 
 
-## Licencia 📄
 
-Este proyecto está bajo la Licencia (Rodolfo Torres) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
 
 
